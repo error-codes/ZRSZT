@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public User selectUserByPrimaryKey(Long userId) {
-        return userMapper.selectUserByPrimaryKey(userId);
+    public User selectUserById(Long userId) {
+        return userMapper.selectUserById(userId);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updateAvatar(String avatar) {
-        return userMapper.updateAvatar(avatar);
+    public Integer updateAvatar(String avatar, Long userId) {
+        return userMapper.updateAvatar(avatar, userId);
     }
 
     @Override

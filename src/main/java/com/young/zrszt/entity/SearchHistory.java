@@ -6,27 +6,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
- * @author error-codes 【BayMax】
+ * @author error-codes【BayMax】
  * @see <a href="www.error-codes.xyz">BayMax Blog</a>
- * @since 2022/5/12 14:40
+ * @since 2022/5/19 16:15
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("用户")
-public class User {
+@ApiModel("搜索历史")
+public class SearchHistory {
+
+    @ApiModelProperty("搜索历史ID")
+    private Long historyId;
 
     @ApiModelProperty("用户ID")
     private Long userId;
 
-    @ApiModelProperty("昵称")
-    private String nickName;
+    @ApiModelProperty("搜索关键词")
+    private String keyword;
 
-    @ApiModelProperty("头像")
-    private String avatar;
-
-    @ApiModelProperty("手机")
-    private String phone;
-
+    @ApiModelProperty("搜索时间")
+    private Date searchTime;
 }

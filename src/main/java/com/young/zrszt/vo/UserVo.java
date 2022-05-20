@@ -1,5 +1,7 @@
 package com.young.zrszt.vo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,18 +17,28 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("用户视图对象")
 public class UserVo {
 
-    @NotNull
+    @ApiModelProperty("用户ID")
+    @NotNull(message = "用户ID不能为空")
     private Long userId;
 
-    @NotBlank(groups = NickName.class)
+    @ApiModelProperty("昵称")
+    @NotBlank(message = "昵称不能为空", groups = NickName.class)
     private String nickName;
 
-    @NotBlank(groups = Phone.class)
+    @ApiModelProperty("手机号")
+    @NotBlank(message = "手机号格式错误", groups = Phone.class)
     private String phone;
 
-    public interface NickName{};
+    public interface NickName {
+    }
 
-    public interface Phone{};
+    ;
+
+    public interface Phone {
+    }
+
+    ;
 }

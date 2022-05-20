@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.young.zrszt.mapper.UserMapper">
 
-    <select id="selectUserByPrimaryKey" parameterType="java.lang.Long" resultType="com.young.zrszt.entity.User">
+    <select id="selectUserById" parameterType="java.lang.Long" resultType="com.young.zrszt.entity.User">
         select * from user where user_id = #{userId}
     </select>
 
@@ -10,7 +10,7 @@
         insert into user value(#{userId}, #{nickName}, #{avatar}, #{phone})
     </insert>
 
-    <update id="updateAvatar" parameterType="">
+    <update id="updateAvatar">
         update user set avatar = #{avatar} where user_id = #{userId}
     </update>
 

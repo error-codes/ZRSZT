@@ -12,9 +12,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-2zexee3xsm35urxe6vo.mysql.rds.aliyuncs.com:3306/zrszt
+    url: jdbc:mysql://139.198.37.239:3306/zrszt
     username: root
-    password: aep7Eiphoh2Gaophugh6eel#o
+    password: xijuzhihui
     hikari:
       minimum-idle: 5
       idle-timeout: 0
@@ -26,8 +26,23 @@ spring:
       connection-test-query: SELECT 1
 
 
+  elasticsearch:
+    username: elastic
+    password: 180420
+    cert: http.p12
+    host: 139.198.37.239
+    port: 9200
+
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.young.zrszt.entity
   configuration:
     map-underscore-to-camel-case: true
+
+
+zrszt:
+  upload:
+    host: http://139.198.37.239/zrfiles
+    path: /usr/local/zrszt
+    image:
+      url: ${zrszt.upload.path}/avatar/

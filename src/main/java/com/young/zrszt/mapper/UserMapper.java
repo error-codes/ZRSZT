@@ -17,43 +17,43 @@ public interface UserMapper {
     /**
      * 根据主键查询用户信息
      *
-     * @param userId
-     * @return
+     * @param userId 用户ID
+     * @return 用户信息
      */
-    User selectUserByPrimaryKey(@Param("userId") Long userId);
+    User selectUserById(@Param("userId") Long userId);
 
     /**
      * 创建一个用户
      *
-     * @param user
-     * @return
+     * @param user 用户信息
+     * @return 创建结果
      */
     Integer createUser(User user);
 
     /**
      * 修改用户头像
      *
-     * @param avatar
-     * @param userId
-     * @return
+     * @param avatar 头像
+     * @param userId 用户ID
+     * @return 修改结果
      */
     Integer updateAvatar(@Param("avatar") String avatar, @Param("userId") Long userId);
 
     /**
      * 修改用户手机号
      *
-     * @param phone
-     * @param userId
-     * @return
+     * @param phone 手机号
+     * @param userId 用户ID
+     * @return 修改结果
      */
     Integer updatePhone(@Param("phone") String phone, @Param("userId") Long userId);
 
     /**
      * 修改用户昵称
      *
-     * @param nickName
-     * @param userId
-     * @return
+     * @param nickName 昵称
+     * @param userId 用户ID
+     * @return 修改结果
      */
     Integer updateNickName(@Param("nickName") String nickName, @Param("userId") Long userId);
 }

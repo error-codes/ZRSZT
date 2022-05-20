@@ -34,9 +34,10 @@ public class ResultMessage {
     public static final String UPDATE_SUCCESS = "修改成功！";
     public static final String UPDATE_FAILED = "修改失败！";
     public static final String QUERY_SUCCESS = "查询成功！";
-    public static final String QUERY_FAILED = "查询失败！";
-    public static final String BAN_SUCCESS = "禁用成功";
-    public static final String BAN_FAILED = "禁用失败";
+    public static final String COLLECT_SUCCESS = "收藏成功";
+    public static final String COLLECT_FAILED = "收藏失败";
+    public static final String UN_COLLECT_SUCCESS = "取消收藏成功";
+    public static final String UN_COLLECT_FAILED = "取消收藏失败";
     public static final String PICK_SUCCESS = "启用成功";
     public static final String PICK_FAILED = "启用失败";
     public static final String EXPORT_SUCCESS = "导出成功";
@@ -51,10 +52,6 @@ public class ResultMessage {
     public static final String LOGOUT_FAILURE = "下线失败";
     public static final String REFRESH_SUCCESS = "刷新成功";
     public static final String REFRESH_FAILURE = "刷新失败";
-    public static final String CLAIM_SUCCESS = "认领申请递交成功";
-    public static final String END_CLAIM_SUCCESS = "结束认领成功";
-    public static final String CLAIM_FAILURE = "认领申请递交失败";
-    public static final String END_CLAIM_FAILURE = "结束认领失败";
 
     /********************************************
      *                                          *

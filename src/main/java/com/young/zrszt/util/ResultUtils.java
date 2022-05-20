@@ -15,6 +15,14 @@ import lombok.NoArgsConstructor;
  */
 public class ResultUtils {
 
+    public static <T> CommonDataResult<T> response(Integer code, String message, T data) {
+        return new CommonDataResult<>(code, message, data);
+    }
+
+    public static CommonResult response(Integer code, String message) {
+        return new CommonResult(code, message);
+    }
+
     /*********************************************
      *                                           *
      *                200_结果集                  *

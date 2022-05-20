@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.young.zrszt.mapper.CollectMapper">
+
+    <insert id="collect" parameterType="com.young.zrszt.entity.Collect">
+        insert into collect value(#{collectId}, #{newsId}, #{userId}, #{collectTime})
+    </insert>
+
+    <delete id="unCollect" parameterType="java.lang.Long">
+        delete from collect where collect_id = #{collectId}
+    </delete>
+</mapper>
