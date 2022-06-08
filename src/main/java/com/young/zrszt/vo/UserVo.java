@@ -35,10 +35,7 @@ public class UserVo {
     public interface NickName {
     }
 
-    ;
-
     public interface Phone {
     }
 
-    ;
 }

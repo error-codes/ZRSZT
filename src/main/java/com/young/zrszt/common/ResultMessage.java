@@ -36,6 +36,7 @@ public class ResultMessage {
     public static final String QUERY_SUCCESS = "查询成功！";
     public static final String COLLECT_SUCCESS = "收藏成功";
     public static final String COLLECT_FAILED = "收藏失败";
+    public static final String COLLECT_EXIST = "已收藏，请勿重复收藏";
     public static final String UN_COLLECT_SUCCESS = "取消收藏成功";
     public static final String UN_COLLECT_FAILED = "取消收藏失败";
     public static final String PICK_SUCCESS = "启用成功";
@@ -97,7 +98,7 @@ public class ResultMessage {
      *******************************************/
     public static final String PHONE_REGISTERED = "手机号已经注册";
     public static final String PHONE_FORMAT_ERROR = "手机号格式错误，请检查后重新输入";
-    public static final String USERNAME_REGISTERED = "用户名已经注册";
+    public static final String USER_EXIST = "用户已经存在";
     public static final String VERIFY_CODE_ERROR = "验证码输入错误";
     public static final String USER_INPUT_ERROR = "您输入的数据格式错误或您没有权限访问资源";
     public static final String SYSTEM_ERROR = "系统出现异常，请您稍后再试或联系管理员！";

@@ -56,4 +56,12 @@ public interface UserMapper {
      * @return 修改结果
      */
     Integer updateNickName(@Param("nickName") String nickName, @Param("userId") Long userId);
+
+    /**
+     * 根据用户手机号查找用户
+     *
+     * @param phone 手机号
+     * @return 用户信息
+     */
+    User selectUserByPhone(@Param("phone") String phone);
 }

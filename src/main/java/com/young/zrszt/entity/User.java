@@ -1,10 +1,13 @@
 package com.young.zrszt.entity;
 
+import com.young.zrszt.enums.Channel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * @author error-codes 【BayMax】
@@ -29,4 +32,6 @@ public class User {
     @ApiModelProperty("手机")
     private String phone;
 
+    @ApiModelProperty("我的频道")
+    private String channel;
 }

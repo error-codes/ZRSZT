@@ -10,6 +10,7 @@ spring:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
 
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://139.198.37.239:3306/zrszt
@@ -33,6 +34,21 @@ spring:
     host: 139.198.37.239
     port: 9200
 
+
+  redis:
+    database: 0
+    host: 139.198.37.239
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 1
+    timeout: PT10S
+    password: ycr1207
+
+
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.young.zrszt.entity
@@ -42,7 +58,11 @@ mybatis:
 
 zrszt:
   upload:
-    host: http://139.198.37.239/zrfiles
+    host: http://139.198.37.239:3333/zrfiles
     path: /usr/local/zrszt
     image:
       url: ${zrszt.upload.path}/avatar/
+
+
+
+

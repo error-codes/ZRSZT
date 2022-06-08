@@ -1,7 +1,9 @@
 package com.young.zrszt.service;
 
 import com.young.zrszt.common.CommonPage;
+import com.young.zrszt.dto.NewsDto;
 import com.young.zrszt.entity.News;
+import com.young.zrszt.enums.Channel;
 import com.young.zrszt.vo.CommonIdVo;
 import com.young.zrszt.vo.NewsVo;
 
@@ -49,10 +51,12 @@ public interface NewsService {
      *
      * @param page    页码
      * @param size    数量
+     * @param channel 频道
+     * @param userId  用户ID
      * @param keyword 关键字
      * @return 新闻列表
      */
-    CommonPage<News> listNews(Integer page, Integer size, String keyword);
+    CommonPage<NewsDto> listNews(Integer page, Integer size, Channel channel, Long userId, String keyword);
 
 
 }

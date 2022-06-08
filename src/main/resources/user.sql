@@ -8,6 +8,7 @@ CREATE TABLE user
     nick_name varchar(50)  NOT NULL COMMENT '昵称',
     avatar    varchar(255) NOT NULL COMMENT '头像',
     phone     varchar(15)  NOT NULL COMMENT '手机号',
+    channel   varchar(100) NOT NULL COMMENT '我的频道',
     PRIMARY KEY (user_id)
 ) ENGINE INNODB,
   character set utf8mb4;
@@ -18,10 +19,10 @@ DROP TABLE IF EXISTS collect;
 CREATE TABLE collect
 (
     collect_id   bigint(20) COMMENT '收藏ID',
-    news_id      bigint(20) NOT NULL COMMENT '新闻ID',
+    entity_id    bigint(20) NOT NULL COMMENT '实体ID',
     user_id      bigint(20) NOT NULL COMMENT '用户ID',
     collect_time datetime   NOT NULL COMMENT '收藏时间',
-    category     tinyint(3) NOT NULL COMMENT '分类实体',
+    category     tinyint(3) NOT NULL COMMENT '实体类别',
     PRIMARY KEY (collect_id)
 ) ENGINE INNODB,
   character set utf8mb4;

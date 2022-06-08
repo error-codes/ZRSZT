@@ -1,5 +1,7 @@
 package com.young.zrszt.enums;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,23 +12,21 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum CategoryEnum {
+@ApiModel("分类")
+public enum Category {
 
-    // 要闻
+    @ApiModelProperty("新闻")
     NEWS(1),
 
-    // 企业
+    @ApiModelProperty("企业")
     COMPANY(2),
 
-    // 法规
+    @ApiModelProperty("法规")
     STATUTE(3),
 
-    // 标准
+    @ApiModelProperty("标准")
     STANDARD(4);
 
-    /**
-     * 搜索分类
-     */
     private final Integer category;
 
 }

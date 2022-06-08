@@ -1,6 +1,6 @@
 package com.young.zrszt.vo;
 
-import com.young.zrszt.enums.CategoryEnum;
+import com.young.zrszt.enums.Category;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -30,6 +30,6 @@ public class CollectVo {
 
     @ApiModelProperty(value = "实体类别")
     @NotNull(message = "实体类别不能为空")
-    private CategoryEnum categoryEnum;
+    private Category category;
 
 }

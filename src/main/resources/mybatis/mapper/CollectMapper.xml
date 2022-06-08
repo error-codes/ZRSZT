@@ -3,10 +3,21 @@
 <mapper namespace="com.young.zrszt.mapper.CollectMapper">
 
     <insert id="collect" parameterType="com.young.zrszt.entity.Collect">
-        insert into collect value(#{collectId}, #{newsId}, #{userId}, #{collectTime})
+        insert into collect
+        values (#{collectId}, #{entityId}, #{userId}, #{collectTime}, #{category})
     </insert>
 
     <delete id="unCollect" parameterType="java.lang.Long">
-        delete from collect where collect_id = #{collectId}
+        delete
+        from collect
+        where collect_id = #{collectId}
     </delete>
+
+    <select id="selectCollect" resultType="java.lang.Long">
+        select collect_id
+        from collect
+        where entity_id = #{entityId}
+          and user_id = #{userId}
+          and category = #{category}
+    </select>
 </mapper>

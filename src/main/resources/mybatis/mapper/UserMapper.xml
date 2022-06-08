@@ -3,22 +3,37 @@
 <mapper namespace="com.young.zrszt.mapper.UserMapper">
 
     <select id="selectUserById" parameterType="java.lang.Long" resultType="com.young.zrszt.entity.User">
-        select * from user where user_id = #{userId}
+        select *
+        from user
+        where user_id = #{userId}
     </select>
 
     <insert id="createUser" parameterType="com.young.zrszt.entity.User">
-        insert into user value(#{userId}, #{nickName}, #{avatar}, #{phone})
+        insert into user
+        values (#{userId}, #{nickName}, #{avatar}, #{phone})
     </insert>
 
     <update id="updateAvatar">
-        update user set avatar = #{avatar} where user_id = #{userId}
+        update user
+        set avatar = #{avatar}
+        where user_id = #{userId}
     </update>
 
     <update id="updatePhone" parameterType="com.young.zrszt.vo.UserVo">
-        update user set phone = #{phone} where user_id = #{userId}
+        update user
+        set phone = #{phone}
+        where user_id = #{userId}
     </update>
 
     <update id="updateNickName" parameterType="com.young.zrszt.vo.UserVo">
-        update user set nick_name = #{nickName} where user_id = #{userId}
+        update user
+        set nick_name = #{nickName}
+        where user_id = #{userId}
     </update>
+
+    <select id="selectUserByPhone" parameterType="java.lang.String" resultType="com.young.zrszt.entity.User">
+        select *
+        from user
+        where phone = #{phone}
+    </select>
 </mapper>

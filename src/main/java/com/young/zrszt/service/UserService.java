@@ -1,8 +1,14 @@
 package com.young.zrszt.service;
 
+import com.young.zrszt.common.CommonDataResult;
+import com.young.zrszt.dto.UserDetailsDto;
 import com.young.zrszt.entity.User;
+import com.young.zrszt.entity.YcrUserDetails;
 import com.young.zrszt.vo.RegisterVo;
+import com.young.zrszt.vo.UserLoginVo;
 import com.young.zrszt.vo.UserVo;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author error-codes 【BayMax】
@@ -51,4 +57,21 @@ public interface UserService {
      * @return 修改结果
      */
     Integer updateNickName(UserVo userVo);
+
+    /**
+     * 用户登录
+     *
+     * @param verifyCode 验证码
+     * @param userLoginVo 用户登录视图对象
+     * @return 用户信息
+     */
+    CommonDataResult<UserDetailsDto> login(String verifyCode, UserLoginVo userLoginVo);
+
+    /**
+     * 根据Token获取用户信息
+     *
+     * @param token token
+     * @return 用户信息
+     */
+    YcrUserDetails getUserInfo(String token);
 }

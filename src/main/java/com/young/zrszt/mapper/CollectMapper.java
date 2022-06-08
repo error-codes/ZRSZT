@@ -1,6 +1,7 @@
 package com.young.zrszt.mapper;
 
 import com.young.zrszt.entity.Collect;
+import com.young.zrszt.vo.CollectVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -26,4 +27,14 @@ public interface CollectMapper {
      * @return 取消收藏结果
      */
     Integer unCollect(Long collectId);
+
+    /**
+     * 查找收藏ID
+     *
+     * @param entityId 收藏实体ID
+     * @param userId   用户ID
+     * @param category 实体类别
+     * @return 收藏ID
+     */
+    Long selectCollect(Long entityId, Long userId, Integer category);
 }

@@ -1,6 +1,6 @@
 package com.young.zrszt.service.impl;
 
-import com.young.zrszt.enums.UploadPathEnum;
+import com.young.zrszt.enums.UploadPath;
 import com.young.zrszt.service.FileService;
 import com.young.zrszt.util.SnowFlakeUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +25,7 @@ public class FileServiceImpl implements FileService {
     private String host;
 
     @Override
-    public String uploadFile(MultipartFile file, UploadPathEnum path) throws IOException {
+    public String uploadFile(MultipartFile file, UploadPath path) throws IOException {
         if (file.isEmpty()) {
             throw new IOException("文件不能为空");
         }

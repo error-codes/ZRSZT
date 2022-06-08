@@ -4,13 +4,16 @@ import com.young.zrszt.common.CommonDataResult;
 import com.young.zrszt.common.CommonPage;
 import com.young.zrszt.common.CommonResult;
 import com.young.zrszt.common.ResultMessage;
+import com.young.zrszt.dto.NewsDto;
 import com.young.zrszt.entity.News;
+import com.young.zrszt.enums.Channel;
 import com.young.zrszt.service.NewsService;
 import com.young.zrszt.util.ResultUtils;
 import com.young.zrszt.vo.CommonIdVo;
 import com.young.zrszt.vo.NewsVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,10 +78,12 @@ public class NewsController {
 
     @ApiOperation("根据查询条件分页查询新闻列表")
     @GetMapping("/listNews")
-    public CommonDataResult<CommonPage<News>> listNews(@RequestParam(defaultValue = "1") Integer page,
-                                                       @RequestParam(defaultValue = "20") Integer size,
-                                                       @RequestParam @NotBlank String keyword) {
-        return ResultUtils.success(ResultMessage.QUERY_SUCCESS, newsService.listNews(page, size, keyword));
+    public CommonDataResult<CommonPage<NewsDto>> listNews(@RequestParam(defaultValue = "1") @ApiParam("页码") Integer page,
+                                                          @RequestParam(defaultValue = "20") @ApiParam("单页装载数量") Integer size,
+                                                          @RequestParam @ApiParam("频道") Channel channel,
+                                                          @RequestParam @ApiParam("用户ID") Long userId) {
+        return ResultUtils.success(ResultMessage.QUERY_SUCCESS, newsService.listNews(page, size, channel, userId, null));
     }
+
 
 }

@@ -1,6 +1,5 @@
 package com.young.zrszt.service;
 
-import com.young.zrszt.enums.CategoryEnum;
 import com.young.zrszt.vo.CollectVo;
 import com.young.zrszt.vo.CommonIdVo;
 
@@ -17,7 +16,7 @@ public interface CollectService {
      * @param collectVo 收藏视图对象
      * @return 收藏结果
      */
-    Integer collect(CollectVo collectVo);
+    Long collect(CollectVo collectVo);
 
     /**
      * 取消收藏新闻
@@ -26,4 +25,12 @@ public interface CollectService {
      * @return 取消收藏结果
      */
     Integer unCollect(CommonIdVo commonIdVo);
+
+    /**
+     * 是否收藏
+     *
+     * @param collectVo 收藏视图对象
+     * @return 收藏结果
+     */
+    Long selectCollect(CollectVo collectVo);
 }

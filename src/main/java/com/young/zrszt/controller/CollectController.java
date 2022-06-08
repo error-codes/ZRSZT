@@ -1,5 +1,6 @@
 package com.young.zrszt.controller;
 
+import com.young.zrszt.common.CommonDataResult;
 import com.young.zrszt.common.CommonResult;
 import com.young.zrszt.common.ResultMessage;
 import com.young.zrszt.service.CollectService;
@@ -32,16 +33,18 @@ public class CollectController {
 
     @ApiOperation("收藏")
     @PostMapping("/collect")
-    public CommonResult collect(@RequestBody @NotNull CollectVo collectVo) {
-        Integer collect = collectService.collect(collectVo);
-        if (collect != 1) {
-            return ResultUtils.failed(ResultMessage.COLLECT_FAILED);
+    public CommonDataResult<CommonIdVo> collect(@RequestBody @NotNull CollectVo collectVo) {
+        Long collect = collectService.collect(collectVo);
+        if (collect == -1L) {
+            return ResultUtils.failed(ResultMessage.COLLECT_EXIST, null);
+        } else if (collect == null) {
+            return ResultUtils.failed(ResultMessage.COLLECT_FAILED, null);
         } else {
-            return ResultUtils.success(ResultMessage.COLLECT_SUCCESS);
+            return ResultUtils.success(ResultMessage.COLLECT_SUCCESS, new CommonIdVo(collect));
         }
     }
 
-    @ApiOperation("取消收藏新闻信息")
+    @ApiOperation("取消收藏")
     @PostMapping("/unCollect")
     public CommonResult unCollect(@RequestBody @NotNull CommonIdVo commonIdVo) {
         Integer unCollect = collectService.unCollect(commonIdVo);

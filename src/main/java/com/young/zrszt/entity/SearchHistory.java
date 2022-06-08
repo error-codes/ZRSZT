@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author error-codes【BayMax】
@@ -30,5 +29,5 @@ public class SearchHistory {
     private String keyword;
 
     @ApiModelProperty("搜索时间")
-    private Date searchTime;
+    private LocalDateTime searchTime;
 }

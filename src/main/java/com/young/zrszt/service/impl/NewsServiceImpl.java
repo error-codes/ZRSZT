@@ -7,19 +7,27 @@ import co.elastic.clients.elasticsearch._types.query_dsl.QueryBuilders;
 import co.elastic.clients.elasticsearch.core.*;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import com.young.zrszt.common.CommonPage;
+import com.young.zrszt.dto.NewsDto;
 import com.young.zrszt.entity.News;
-import com.young.zrszt.mapper.CollectMapper;
+import com.young.zrszt.enums.Category;
+import com.young.zrszt.enums.Channel;
+import com.young.zrszt.service.CollectService;
 import com.young.zrszt.service.NewsService;
 import com.young.zrszt.util.SnowFlakeUtils;
+import com.young.zrszt.vo.CollectVo;
 import com.young.zrszt.vo.CommonIdVo;
 import com.young.zrszt.vo.NewsVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static com.young.zrszt.util.YcrUtils.existsIndex;
 
 /**
  * @author error-codes【BayMax】
@@ -30,11 +38,13 @@ import java.util.stream.Collectors;
 public class NewsServiceImpl implements NewsService {
 
     private final ElasticsearchClient elasticsearchClient;
+    private final CollectService collectService;
     private final String INDEX_NAME = "news";
 
     @Autowired
-    public NewsServiceImpl(ElasticsearchClient elasticsearchClient) {
+    public NewsServiceImpl(ElasticsearchClient elasticsearchClient, CollectService collectService) {
         this.elasticsearchClient = elasticsearchClient;
+        this.collectService = collectService;
     }
 
     @Override
@@ -131,23 +141,32 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public CommonPage<News> listNews(Integer page, Integer size, String keyword) {
+    public CommonPage<NewsDto> listNews(Integer page, Integer size, Channel channel, Long userId, String keyword) {
         if (!existsIndex(INDEX_NAME)) {
             return null;
         }
 
-        SearchRequest searchRequest = new SearchRequest.Builder()
-                .index(INDEX_NAME)
-                .query(QueryBuilders.multiMatch()
-                        .fields("content", "title", "company", "media")
-                        .query(keyword).build()._toQuery())
+        SearchRequest.Builder index = new SearchRequest.Builder()
+                .index(INDEX_NAME);
+        if (!StringUtils.isBlank(keyword)) {
+            index.query(QueryBuilders.multiMatch()
+                    .fields("content", "title", "company", "media")
+                    .query(keyword).build()._toQuery());
+        }
+        if (!Objects.isNull(channel)) {
+            // todo: 频道查询
+        }
+        SearchRequest searchRequest = index
                 .from(page - 1)
                 .size(size)
                 .sort(sort -> sort.field(field -> field.field("releaseTime").order(SortOrder.Desc))).build();
 
         try {
-            SearchResponse<News> searchResponse = elasticsearchClient.search(searchRequest, News.class);
-            List<News> newsList = searchResponse.hits().hits().stream().map(Hit::source).collect(Collectors.toList());
+            SearchResponse<NewsDto> searchResponse = elasticsearchClient.search(searchRequest, NewsDto.class);
+            List<NewsDto> newsList = searchResponse.hits().hits().stream().map(Hit::source).collect(Collectors.toList());
+            newsList.stream().forEach(news -> {
+                news.setCollectId(collectService.selectCollect(new CollectVo(news.getId(), userId, Category.NEWS)));
+            });
             return new CommonPage<>(page, size, newsList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -155,28 +174,4 @@ public class NewsServiceImpl implements NewsService {
         return null;
     }
 
-
-    public boolean existsDocument(String uuid, String index) {
-        ExistsRequest existsRequest = new ExistsRequest.Builder()
-                .index(index)
-                .id(uuid).build();
-
-        try {
-            return elasticsearchClient.exists(existsRequest).value();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean existsIndex(String index) {
-        co.elastic.clients.elasticsearch.indices.ExistsRequest indexRequest = new co.elastic.clients.elasticsearch.indices.ExistsRequest.Builder()
-                .index(index).build();
-        try {
-            return elasticsearchClient.indices().exists(indexRequest).value();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 }

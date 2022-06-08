@@ -1,5 +1,9 @@
 package com.young.zrszt.config;
 
+import com.fasterxml.classmate.TypeResolver;
+import com.young.zrszt.entity.Statute;
+import com.young.zrszt.enums.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -18,7 +22,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfig {
 
-    private static Docket createSwagger() {
+    @Autowired
+    private TypeResolver typeResolver;
+
+    private Docket createSwagger() {
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 .enable(true)
@@ -28,7 +35,7 @@ public class SwaggerConfig {
                 .build();
     }
 
-    private static ApiInfo apiInfo() {
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("中认数智通 API")
                 .contact(new Contact(

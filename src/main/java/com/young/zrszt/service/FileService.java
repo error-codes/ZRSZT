@@ -1,6 +1,6 @@
 package com.young.zrszt.service;
 
-import com.young.zrszt.enums.UploadPathEnum;
+import com.young.zrszt.enums.UploadPath;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -20,6 +20,6 @@ public interface FileService {
      * @return 上传结果
      * @throws IOException;
      */
-    String uploadFile(MultipartFile file, UploadPathEnum path) throws IOException;
+    String uploadFile(MultipartFile file, UploadPath path) throws IOException;
 
 }

@@ -1,7 +1,6 @@
 package com.young.zrszt.service.impl;
 
 import com.young.zrszt.entity.Collect;
-import com.young.zrszt.enums.CategoryEnum;
 import com.young.zrszt.mapper.CollectMapper;
 import com.young.zrszt.service.CollectService;
 import com.young.zrszt.util.DateTimeUtils;
@@ -27,18 +26,32 @@ public class CollectServiceImpl implements CollectService {
     }
 
     @Override
-    public Integer collect(CollectVo collectVo) {
-        Collect collect = new Collect(SnowFlakeUtils.getSnowFlakeId(),
-                collectVo.getEntityId(),
-                collectVo.getUserId(),
-                DateTimeUtils.getCurrentDateTime(),
-                collectVo.getCategoryEnum().getCategory());
+    public Long collect(CollectVo collectVo) {
+        Long collectId = collectMapper.selectCollect(collectVo.getEntityId(), collectVo.getUserId(), collectVo.getCategory().getCategory());
+        if (collectId == null) {
+            collectId = SnowFlakeUtils.getSnowFlakeId();
+            Collect collect = new Collect(collectId,
+                    collectVo.getEntityId(),
+                    collectVo.getUserId(),
+                    DateTimeUtils.getCurrentDateTime(),
+                    collectVo.getCategory().getCategory());
 
-        return collectMapper.collect(collect);
+            Integer result = collectMapper.collect(collect);
+            if (result == 1) {
+                return collectId;
+            }
+            return null;
+        }
+        return -1L;
     }
 
     @Override
     public Integer unCollect(CommonIdVo commonIdVo) {
         return collectMapper.unCollect(commonIdVo.getId());
+    }
+
+    @Override
+    public Long selectCollect(CollectVo collectVo) {
+        return collectMapper.selectCollect(collectVo.getEntityId(), collectVo.getUserId(), collectVo.getCategory().getCategory());
     }
 }
