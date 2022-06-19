@@ -27,16 +27,16 @@ public class GroupStandard {
     private Long url;
 
     @ApiModelProperty("中文标准名称")
-    private String cnName;
+    private String nameCn;
 
     @ApiModelProperty("国际标准名称")
-    private String enName;
+    private String nameEn;
 
     @ApiModelProperty("团体名称")
     private String teamName;
 
     @ApiModelProperty("标准状态")
-    private String state;
+    private String status;
 
     @ApiModelProperty("公布日期")
     private Date pubDate;
@@ -59,9 +59,6 @@ public class GroupStandard {
     @ApiModelProperty("业务范围")
     private String businessScope;
 
-    @ApiModelProperty("归口单位")
-    private String belong;
-
     @ApiModelProperty("法定代表人")
     private String legal;
 
@@ -69,7 +66,7 @@ public class GroupStandard {
     private String supportUnit;
 
     @ApiModelProperty("通信地址")
-    private String address;
+    private String addr;
 
     @ApiModelProperty("邮编")
     private String postCode;
@@ -78,28 +75,28 @@ public class GroupStandard {
     private boolean isPub;
 
     @ApiModelProperty("国民经济分类")
-    private String economicCategory;
+    private String category;
 
     @ApiModelProperty("发布时间")
-    private Date releaseTime;
+    private Date issueDate;
 
     @ApiModelProperty("实施时间")
-    private Date implementTime;
+    private Date actDate;
 
     @ApiModelProperty("中国标准分类号")
-    private String cnCategoryCode;
+    private String ccs;
 
     @ApiModelProperty("国际标准分类号")
-    private String enCategoryCode;
+    private String ics;
 
     @ApiModelProperty("起草单位")
     private List<String> draftUnit;
 
     @ApiModelProperty("起草人")
-    private List<String> drafter;
+    private List<String> draftStaff;
 
     @ApiModelProperty("标准正文")
-    private String pdfContentUrl;
+    private String pdfUrl1;
 
     @ApiModelProperty("范围")
     private String scope;
@@ -111,7 +108,7 @@ public class GroupStandard {
     private String patentInfo;
 
     @ApiModelProperty("标准公告")
-    private String pdfVoteUrl;
+    private String pdfUrl2;
 
     @ApiModelProperty("标准公告时间")
     private Date annTime;
@@ -120,22 +117,22 @@ public class GroupStandard {
     private String buyUrl;
 
     @ApiModelProperty("购买信息-价格")
-    private String buyprice;
+    private String price;
 
     @ApiModelProperty("购买信息-联系人")
-    private String buyContact;
+    private String contact;
 
     @ApiModelProperty("购买信息-联系电话")
-    private String buyTelephone;
+    private String phone1;
 
     @ApiModelProperty("购买信息-手机号码")
-    private String buyPhone;
+    private String phone2;
 
     @ApiModelProperty("购买信息-传真")
-    private String buyFax;
+    private String fax;
 
     @ApiModelProperty("购买信息-邮箱")
-    private String buyEmail;
+    private String email;
 
     @ApiModelProperty("购买信息-简介")
     private String buyDesc;

@@ -39,46 +39,46 @@ public class CountryStandard {
     private String state;
 
     @ApiModelProperty("被代替国标号")
-    private String replace;
+    private String repedBy;
 
     @ApiModelProperty("主管部门")
-    private String competent;
+    private String department;
     
     @ApiModelProperty("归口单位")
-    private String belong;
+    private String ownerUnit;
 
     @ApiModelProperty("执行单位")
-    private String execute;
+    private String executeUnit;
     
     @ApiModelProperty("中文标准名称")
-    private String cnName;
+    private String nameCn;
 
     @ApiModelProperty("英文标准名称")
-    private String enName;
+    private String nameEn;
 
     @ApiModelProperty("发布时间")
-    private Date releaseTime;
+    private Date startDate;
 
     @ApiModelProperty("实施时间")
-    private Date implementTime;
+    private Date actDate;
 
     @ApiModelProperty("废止时间")
-    private Date repealTime;
+    private Date endDate;
 
     @ApiModelProperty("中国标准分类号")
-    private String cnCategoryCode;
+    private String ccs;
 
     @ApiModelProperty("国际标准分类号")
-    private String enCategoryCode;
+    private String ics;
 
     @ApiModelProperty("起草单位")
     private List<String> draftUnit;
 
     @ApiModelProperty("起草人")
-    private List<String> drafter;
+    private List<String> draftStaff;
 
     @ApiModelProperty("采标号")
-    private String adoptCode;
+    private String adoptNo;
 
     @ApiModelProperty("采用国际标准类别")
     private String adoptType;
@@ -86,17 +86,14 @@ public class CountryStandard {
     @ApiModelProperty("采用程度")
     private String adoptLevel;
 
-    @ApiModelProperty("下达日期")
-    private Date releaseDate;
-
     @ApiModelProperty("相近标准【计划】")
-    private List<String> similar;
+    private List<String> similarPlan;
 
     @ApiModelProperty("标准标签")
     private List<String> label;
 
     @ApiModelProperty("标准介绍")
-    private String vote;
+    private String description;
 
     @ApiModelProperty("标准正文")
     private String pdfUrl;
